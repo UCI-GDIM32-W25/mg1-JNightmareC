@@ -11,18 +11,49 @@ public class Player : MonoBehaviour
     private int _numSeedsLeft;
     private int _numSeedsPlanted;
 
-    private void Start ()
+    private void Start()
     {
-        
+        _numSeedsLeft = 5;
+        _numSeedsPlanted = 0;
     }
 
     private void Update()
     {
+        _plantCountUI.UpdateSeeds(_numSeedsLeft, _numSeedsPlanted);
+
+        if(Input.GetKeyDown(KeyCode.Space) && _numSeedsPlanted < 5)
+        {
+            PlantSeed();
+            _numSeedsLeft -= 1;
+            _numSeedsPlanted += 1;
+        }
+
+        
+        if(Input.GetKey(KeyCode.W))
+        {
+            _playerTransform.Translate(Vector3.up * _speed * Time.deltaTime);
+            //time.delta time, and translate 
+        }
+        if(Input.GetKey(KeyCode.S))
+        {
+            _playerTransform.Translate(Vector3.down * _speed * Time.deltaTime);
+
+        }
+        if(Input.GetKey(KeyCode.A))
+        {
+            _playerTransform.Translate(Vector3.left * _speed * Time.deltaTime);
+
+        }
+        if(Input.GetKey(KeyCode.D))
+        {
+            _playerTransform.Translate(Vector3.right * _speed * Time.deltaTime);
+
+        }
         
     }
 
     public void PlantSeed ()
     {
-        
+        Instantiate(_plantPrefab, _playerTransform.position, _playerTransform.rotation);
     }
 }
