@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        _numSeedsLeft = 5;
+        _numSeedsLeft = _numSeeds;
         _numSeedsPlanted = 0;
     }
 
@@ -29,22 +29,22 @@ public class Player : MonoBehaviour
         }
 
         
-        if(Input.GetKey(KeyCode.W))
+        if(Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             _playerTransform.Translate(Vector3.up * _speed * Time.deltaTime);
             //time.delta time, and translate 
         }
-        if(Input.GetKey(KeyCode.S))
+        if(Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             _playerTransform.Translate(Vector3.down * _speed * Time.deltaTime);
 
         }
-        if(Input.GetKey(KeyCode.A))
+        if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             _playerTransform.Translate(Vector3.left * _speed * Time.deltaTime);
 
         }
-        if(Input.GetKey(KeyCode.D))
+        if(Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             _playerTransform.Translate(Vector3.right * _speed * Time.deltaTime);
 
